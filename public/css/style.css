@@ -1,0 +1,36 @@
+
+
+
+
+h1{
+    color: red;
+}
+.pic1{
+  
+    width: 60%;
+    margin-left: 2rem;
+    margin-bottom: 1px;
+}
+.col1{
+
+    margin-left: 2rem;
+    font-family:Arial, Helvetica, sans-serif;
+    
+}
+h4{
+    text-align: center;
+    color: rgb(81, 81, 170);
+    font-weight: bold;
+}
+
+.fitpic{
+    width: 50%;
+    height: 30rem;
+}
+.foter{
+    padding: 12px 15px;
+    width: 100%;
+    background-color: rgb(68, 81, 126);
+    color: white;
+    text-align: center;
+}

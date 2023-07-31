@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+    <style>
+      body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.con{
+  padding: 10px;
+display: flex;
+}
+
+button {
+  height: 2rem;
+   width: 5rem;
+  font-size: 12px;
+  background-color: #7f95ad;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: #0056b3;
+}
+p {
+  font-size: 24px;
+  margin: 8px;
+}
+      article {
+  --img-scale: 1.001;
+  --title-color: black;
+  --link-icon-translate: -20px;
+  --link-icon-opacity: 0;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: none;
+  background: #fff;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+article a::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  cursor: pointer;
+  content: "";
+}
+
+/* basic article elements styling */
+article h2 {
+  margin: 0 0 18px 0;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  color: var(--title-color);
+  transition: color 0.3s ease-out;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+article img {
+  max-width: 100%;
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+
+.article-body {
+  padding: 24px;
+}
+
+article a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #28666e;
+}
+
+article a:focus {
+  outline: 1px dotted #28666e;
+}
+
+article a .icon {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  transform: translateX(var(--link-icon-translate));
+  opacity: var(--link-icon-opacity);
+  transition: all 0.3s;
+}
+
+/* using the has() relational pseudo selector to update our custom properties */
+article:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: #28666e;
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+
+/************************ 
+Generic layout (demo looks)
+**************************/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 48px 0;
+  font-family: "Figtree", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  background-image: linear-gradient(45deg, #7c9885, #b5b682);
+  min-height: 100vh;
+}
+
+.articles {
+  margin-top: 2px;
+    margin-bottom: 2px;
+  display: grid;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+@media screen and (max-width: 960px) {
+  article {
+    container: card/inline-size;
+  }
+  .article-body p {
+    display: none;
+  }
+}
+
+@container card (min-width: 380px) {
+  .article-wrapper {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+  .article-body {
+    padding-left: 0;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  figure img {
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+.foter{
+    padding: 12px 15px;
+    width: 100%;
+    background-color: rgb(68, 81, 126);
+    color: white;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+{{>navbar}}
+<section class="articles">
+  <article>
+    <div class="article-wrapper">
+      <figure>
+        <img src="img/morning.jpg" alt="" />
+      </figure>
+      <div class="article-body">
+        <h2>Choose the walking time according your mind.</h2> 
+           <div class="con">
+            <button id="increaseButton">Increase</button>
+           <p id="counter">0</p>
+            <button id="decreaseButton">Decrease</button>
+            </div> 
+            <h3>Walk time:-20</h3> 
+            <h3>Morning Walk Description:-</h3>A morning walk is a simple yet effective way to 
+            start the day on a healthy and refreshing note.
+             It involves taking a leisurely walk outdoors, 
+             typically in a park, garden, or any natural environment. 
+             The morning walk is usually undertaken early in the morning, 
+             shortly after sunrise, when the air is crisp and the surroundings are peaceful.
+            
+            <h3>Benefits of Morning Walk:-</h3>
+           1) Physical Fitness: Morning walk provides an excellent opportunity to engage in low-impact exercise, promoting cardiovascular health, and strengthening muscles.<br>
+           2) Fresh Air and Sunlight: Breathing in fresh air and basking in the morning sunlight can uplift the mood, reduce stress, and boost vitamin D levels.<br>
+           3) Mental Clarity: Walking amidst nature can have a calming effect on the mind, promoting mental clarity and reducing anxiety.<br>
+           4) Weight Management: Regular morning walks can contribute to weight management and help in burning calories.
+      </div>
+    </div>
+  </article>
+  <article>
+
+    <div class="article-wrapper">
+      <figure>
+        <img src="img/yoga.jpg" alt="" />
+      </figure>
+      <div class="article-body">
+      <h2>Choose the yoga time according your mind.</h2> 
+           <div class="con">
+            <button id="increaseButton">Increase</button>
+           <p id="counter">0</p>
+            <button id="decreaseButton">Decrease</button>
+            </div>
+         <h3>Yoga Time:- 30 Min</h3>
+           <h3>Yoga Description:-</h3>Yoga is an ancient practice that originated 
+           in India and has been passed down through generations.
+            It is a holistic system that encompasses 
+            physical postures (asanas), breathing exercises
+             (pranayama), meditation, and ethical principles.
+              Yoga aims to bring harmony and balance to the body, 
+              mind, and spirit, promoting overall well-being and self-awareness.
+               <h3>Benefits of Yoga::-</h3>
+             1)Weight Management: A diet plan tailored to an individual's needs can help with weight management. It may facilitate weight loss for those looking to shed excess pounds or support weight maintenance for those aiming to stay at a healthy weight.<br>
+             2)Nutrient Adequacy: A properly planned diet ensures that the body receives all the essential nutrients it needs to function optimally. It promotes adequate intake of vitamins, minerals, protein, carbohydrates, fats, and other vital nutrients.<br>
+             3)Improved Energy Levels: Consuming balanced meals at regular intervals helps maintain steady blood sugar levels, which can lead to improved energy levels throughout the day.<br>
+             4)Enhanced Physical Performance: For athletes or individuals engaged in physical activities, a well-structured diet plan can optimize energy levels, enhance endurance, and support muscle repair and growth.
+
+    </div>
+  </article>
+ <article>
+
+    <div class="article-wrapper">
+      <figure>
+        <img src="https://www.eatingwell.com/thmb/2yLILRr7uN4KAyRyCrPhDM1yzPU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/article_2060706_healthy-weight-gain-meal-plan_-04-7c417d6a368048f6ac9ea114b507357f.jpg" alt="" />
+      </figure>
+      <div class="article-body">
+      <h2>Diet Plan</h2><br> 
+  
+         <h3>Take the diet in on day of three time </h3>
+           <h3>Diet plan Description:-</h3>
+          A diet plan is a structured eating regimen 
+          that outlines what and how much a person should eat 
+          to achieve specific health or fitness goals. These
+           goals can vary widely, such as weight loss, weight gain, 
+           improving overall health
+               <h3>Benefits of Diet::-</h3>
+              1) Improved Flexibility: Regular practice of yoga asanas helps increase flexibility and range of motion in the body.<br>
+              2) Increased Strength: Many yoga poses require the engagement of various muscle groups, contributing to overall strength and stamina.<br>
+              3) Stress Reduction: The combination of breath control and meditation in yoga helps reduce stress and promote relaxation.<br>
+              4) Enhanced Mental Focus: Yoga cultivates mental clarity and concentration, improving cognitive abilities and focus.
+      </div>
+    </div>
+  </article>
+
+</section>
+</div>
+<footer class="foter">
+  <div class="foter1">
+    <h5>@2023Copyright Created:-Sudhanshu Sharma</h5>
+  </div>
+</footer>
+
+    {{!-- javascript code --}}
+    
+    <script>
+const decreaseButton = document.getElementById('decreaseButton');
+const increaseButton = document.getElementById('increaseButton');
+const counterElement = document.getElementById('counter');
+
+// Initialize the counter value
+let counterValue = 0;
+
+// Function to update the counter and display the new value
+function updateCounter() {
+  counterElement.textContent = counterValue;
+}
+
+// Event listener for the decrease button
+decreaseButton.addEventListener('click', () => {
+  counterValue--; // Decrease the counter value
+  updateCounter(); // Update the display
+});
+
+// Event listener for the increase button
+increaseButton.addEventListener('click', () => {
+  counterValue++; // Increase the counter value
+  updateCounter(); // Update the display
+});
+
+// Initial update to display the initial value
+updateCounter();
+
+    </script>
+    
+</body>
+</html>
